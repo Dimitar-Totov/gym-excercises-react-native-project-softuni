@@ -12,7 +12,7 @@ export default function RootNavigator() {
     const Tabs = createBottomTabNavigator();
 
     return (
-        <Tabs.Navigator>
+        <Tabs.Navigator screenOptions={{ headerShown: false }}>
             <Tabs.Screen
                 name="Home"
                 component={HomeScreen}
