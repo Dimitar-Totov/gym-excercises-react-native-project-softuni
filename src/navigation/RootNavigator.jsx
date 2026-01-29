@@ -28,7 +28,7 @@ export default function RootNavigator() {
                 }}
             />
             <Tabs.Screen
-                name="About"
+                name="Info"
                 component={AboutScreen}
                 options={{
                     tabBarIcon: () => <Info />,
