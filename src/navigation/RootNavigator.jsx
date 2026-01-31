@@ -3,9 +3,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { House, Dumbbell, Info, CircleUserRound } from "lucide-react-native";
 
 import HomeScreen from "../screens/HomeScreen";
-import CatalogScreen from "../screens/CatalogScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import InfoNavigator from "./InfoNavigator";
+import CatalogNavigator from "./CatalogNavigator";
 
 export default function RootNavigator() {
 
@@ -22,7 +22,7 @@ export default function RootNavigator() {
             />
             <Tabs.Screen
                 name="Catalog"
-                component={CatalogScreen}
+                component={CatalogNavigator}
                 options={{
                     tabBarIcon: () => <Dumbbell />,
                 }}

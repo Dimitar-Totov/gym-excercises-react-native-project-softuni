@@ -1,10 +1,13 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
+import { Text, StyleSheet, TouchableOpacity } from "react-native"
+import { useNavigation } from '@react-navigation/native';
 
 import { ArrowRight } from 'lucide-react-native';
 
 export default function ExerciseCard({ title }) {
+    const navigation = useNavigation();
+
     return (
-        <TouchableOpacity style={styles.exercise}>
+        <TouchableOpacity style={styles.exercise} onPress={() => navigation.navigate('Details Page', { title })}>
             <Text>{title}</Text>
             <ArrowRight />
         </TouchableOpacity>
