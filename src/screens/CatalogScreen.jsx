@@ -1,55 +1,32 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useMemo, useState } from "react";
 
-import { ArrowRight } from 'lucide-react-native';
+import * as data from '../data/data.json'
+import FilterButton from "../components/FilterButton";
+import ExerciseCard from "../components/ExerciseCard";
 
 export default function CatalogScreen() {
+    const [selected, setSelected] = useState("upper");
+    const filteredData = useMemo(() => {
+        if (selected === "full")
+            return data.exercises.map(item => item.title);
+
+        return data.exercises
+            .filter(item => item.type === selected)
+            .map(item => item.title);
+    }, [selected]);
 
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
                 <View style={styles.selectOptions}>
-                    <Text style={styles.selectOption}>Upper Body</Text>
-                    <Text style={styles.selectOption}>Lower Body</Text>
-                    <Text style={styles.selectOption}>Full Body</Text>
+                    <FilterButton label="Upper Body" value="upper" selected={selected} onPress={setSelected} />
+                    <FilterButton label="Lower Body" value="lower" selected={selected} onPress={setSelected} />
+                    <FilterButton label="Full Body" value="full" selected={selected} onPress={setSelected} />
                 </View>
                 <View style={styles.exercises}>
-                    <View style={styles.exercise}>
-                        <Text>Bench Press</Text>
-                        <ArrowRight />
-                    </View>
-                    <View style={styles.exercise}>
-                        <Text>Incline Bench Press</Text>
-                        <ArrowRight />
-                    </View>
-                    <View style={styles.exercise}>
-                        <Text>Decline Bench Press</Text>
-                        <ArrowRight />
-                    </View>
-                    <View style={styles.exercise}>
-                        <Text>Dumbbell Bench Press</Text>
-                        <ArrowRight />
-                    </View>
-                    <View style={styles.exercise}>
-                        <Text>Chest Fly</Text>
-                        <ArrowRight />
-                    </View>
-                    <View style={styles.exercise}>
-                        <Text>Cable Fly</Text>
-                        <ArrowRight />
-                    </View>
-                    <View style={styles.exercise}>
-                        <Text>Push-Ups</Text>
-                        <ArrowRight />
-                    </View>
-                    <View style={styles.exercise}>
-                        <Text>Dips</Text>
-                        <ArrowRight />
-                    </View>
-                    <View style={styles.exercise}>
-                        <Text>Machine Chest Press</Text>
-                        <ArrowRight />
-                    </View>
+                    {filteredData.map(title => <ExerciseCard key={title} title={title} />)}
                 </View>
             </View>
         </SafeAreaView>
@@ -66,12 +43,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         gap: 15
     },
-    selectOptions:{
+    selectOptions: {
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-evenly'
     },
-    selectOption:{
+    selectOption: {
         backgroundColor: '#65da5a',
         paddingInline: 15,
         paddingBlock: 10,
@@ -84,16 +61,5 @@ const styles = StyleSheet.create({
         width: '90%',
         gap: 10,
     },
-    exercise: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        padding: 15,
-        backgroundColor: '#fff',
-        borderRadius: 20,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.15,
-        shadowRadius: 6,
-        elevation: 4,
-    }
+
 })
