@@ -9,8 +9,8 @@ import ExcercisesHomepage from '../components/ExcercisesHomepage';
 import HomepageCards from '../components/HomepageCards';
 import PopularExercises from '../components/PopularExercises';
 
-export default function HomeScreen() {
-    const [text, changeText] = useState('');
+export default function HomeScreen({ navigation, route }) {
+    const [text, setText] = useState('');
     const filteredData = useMemo(() => data.exercises.filter(item => text === '' ? '' : item.title.toLocaleLowerCase().includes(text.toLocaleLowerCase())), [text]);
 
     return (
@@ -20,24 +20,24 @@ export default function HomeScreen() {
                     behavior={Platform.OS === "ios" ? "padding" : "height"}
                 >
                     <ScrollView keyboardDismissMode="on-drag">
-                        <View style={style.mainContainer}>
+                        <View style={styles.mainContainer}>
                             <View>
-                                <Text style={style.welcomeHeader}>Your goals start here. Let's crush them</Text>
+                                <Text style={styles.welcomeHeader}>Your goals start here. Let's crush them</Text>
                             </View>
                             <View style={{ alignItems: 'center', marginTop: 20 }}>
                                 <View style={{ height: 380, width: 380 }}>
-                                    <Image style={style.welcomeImage} source={require('../../assets/homescreen.png')} />
+                                    <Image style={styles.welcomeImage} source={require('../../assets/homescreen.png')} />
                                 </View>
                             </View>
                             <View style={{ alignItems: 'center', marginTop: 25, width: '100%' }}>
-                                <TextInput onChangeText={changeText} value={text} placeholder='Search about some exercise' style={style.homescreenSearch} />
+                                <TextInput onChangeText={setText} value={text} placeholder='Search about some exercise' style={styles.homescreenSearch} />
                                 {text ?
-                                    <TouchableOpacity style={style.clearInput} hitSlop={10} onPress={() => changeText('')}>
+                                    <TouchableOpacity style={styles.clearInput} hitSlop={10} onPress={() => setText('')}>
                                         <X />
                                     </TouchableOpacity>
                                     : ''
                                 }
-                                {text ? <ExcercisesHomepage searchedText={filteredData} /> : <HomepageCards />}
+                                {text ? <ExcercisesHomepage searchedText={filteredData} /> : <HomepageCards route={route} navigation={navigation} />}
                             </View>
                             <PopularExercises />
                         </View>
@@ -48,7 +48,7 @@ export default function HomeScreen() {
     )
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     mainContainer: {
         flexDirection: 'column',
         marginTop: 60

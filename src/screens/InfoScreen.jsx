@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, ScrollView, Dimensions, Platform, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView, Dimensions, TouchableOpacity } from "react-native";
 
 import { Smartphone, Mail, MapPin } from 'lucide-react-native';
 import MapView, { Marker } from "react-native-maps";
