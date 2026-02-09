@@ -2,10 +2,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { House, Dumbbell, Info, CircleUserRound } from "lucide-react-native";
 
-import HomeNavigator from "./HomeNavigator";
 import ProfileScreen from "../screens/ProfileScreen";
 import InfoNavigator from "./InfoNavigator";
 import CatalogNavigator from "./CatalogNavigator";
+import HomeScreen from "../screens/HomeScreen";
 
 export default function RootNavigator() {
 
@@ -15,7 +15,7 @@ export default function RootNavigator() {
         <Tabs.Navigator screenOptions={{ headerShown: false }}>
             <Tabs.Screen
                 name="Home"
-                component={HomeNavigator}
+                component={HomeScreen}
                 options={{
                     tabBarIcon: () => <House />,
                 }}

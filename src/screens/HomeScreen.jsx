@@ -6,7 +6,6 @@ import * as data from '../data/data.json'
 import { X } from 'lucide-react-native';
 
 import ExcercisesHomepage from '../components/ExcercisesHomepage';
-import HomepageCards from '../components/HomepageCards';
 import PopularExercises from '../components/PopularExercises';
 
 export default function HomeScreen({ navigation, route }) {
@@ -37,7 +36,7 @@ export default function HomeScreen({ navigation, route }) {
                                     </TouchableOpacity>
                                     : ''
                                 }
-                                {text ? <ExcercisesHomepage searchedText={filteredData} /> : <HomepageCards route={route} navigation={navigation} />}
+                                {text ? <ExcercisesHomepage searchedText={filteredData} /> : ''}
                             </View>
                             <PopularExercises />
                         </View>

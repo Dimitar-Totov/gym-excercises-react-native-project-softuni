@@ -8,7 +8,7 @@ export default function ExerciseCard({ title }) {
 
     return (
         <TouchableOpacity style={styles.exercise} onPress={() => navigation.navigate('Details Page', { title })}>
-            <Text>{title}</Text>
+            <Text style={{fontWeight: '600', fontSize: 18,}}>{title}</Text>
             <ArrowRight />
         </TouchableOpacity>
     )

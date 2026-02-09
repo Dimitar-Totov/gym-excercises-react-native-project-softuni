@@ -130,7 +130,8 @@
             "title": "Abdominal Exercises",
             "description": "Abdominal exercises are strength exercise affecting the abdominal muscles(colloquially known as the stomach muscles or abs). The human abdominal muscular set consists of four: the rectus abdominis,internal oblique, external oblique, and transversus abdominis. During the execution of abdominal training, understanding the functions, effects, and variations in exercise, along with considering the suitability, and safety in realtion to current physical condition is cruicial, as overtraining can lead to severe injury.",
             "imageUrl": "https://www.shutterstock.com/image-vector/man-doing-modified-crunches-abdominals-600nw-2290766945.jpg",
-            "type": "abs"
+            "type": "abs",
+            "muscleGroup": "abs"
         },
         {
             "title": "Squat",
